@@ -1,0 +1,10 @@
+@layer starlight, starlight-pydocs, overrides, this;
+
+/* Engine defaults bundled into the container. Packages may override these in
+ * their own site styles. */
+@layer overrides {
+  :root {
+    --sl-font: "IBM Plex Sans", sans-serif;
+    --sl-font-mono: "JetBrains Mono", monospace;
+  }
+}

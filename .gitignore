@@ -1,0 +1,36 @@
+# package-specific inputs, supplied as volumes in the container model:
+#   site    volume -> docs/site  (mounted at /app/docs/site)
+#   content volume -> docs/content  (mounted at /app/src/content/docs)
+#   source  volume -> Python source (mounted at $DOCS_SOURCE_ROOT)
+/docs/
+# content volume mount point (bind-mounted at src/content/docs in the container)
+/src/content
+
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+!.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# dotenv environment variable files
+.env.*
+!.env.example

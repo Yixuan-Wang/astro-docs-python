@@ -1,0 +1,21 @@
+# Regenerated in the image
+node_modules
+dist
+.astro
+
+# Package-specific inputs — supplied as runtime volumes, never baked in
+docs
+src/content
+
+# VCS / editor / tooling
+.git
+.gitignore
+.vscode
+.zed
+.vite-hooks
+
+# Misc
+*.log
+.env
+.env.*
+.DS_Store
