@@ -1,0 +1,63 @@
+name: Publish container image
+
+# Builds the reusable Astro + Starlight docs "engine" image (see Dockerfile) and
+# pushes it to GitHub Container Registry. The engine bakes the toolchain only;
+# `astro build` runs at container runtime against mounted volumes, so this
+# workflow needs neither the docs content nor the Python source.
+
+on:
+  push:
+    branches: ["main"]
+    # Publish semver tags as releases.
+    tags: ["v*.*.*"]
+
+env:
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo> -> ghcr.io/yixuan-wang/astro-docs-python
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # BuildKit is required: the Dockerfile uses `# syntax=docker/dockerfile:1.7`,
+      # RUN --mount=type=cache, and COPY --from=ghcr.io/astral-sh/uv.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
+
+      # Log into the registry except on PRs (no push happens on PRs).
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      # Build and push (build-only on PRs to validate the Dockerfile still builds).
+      # GHA layer cache speeds the deps layer, keyed on package.json/pnpm-lock.yaml;
+      # note it does NOT persist the pnpm store (that is a BuildKit cache mount).
+      - name: Build and push Docker image
+        id: build-and-push
+        uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
+        with:
+          context: .
+          platforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
