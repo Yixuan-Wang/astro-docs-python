@@ -3,6 +3,7 @@ import type { StarlightUserConfig } from "@astrojs/starlight/types";
 import type { StarlightPydocsOptions } from "starlight-pydocs";
 
 export interface SiteConfig {
+  url?: string;
   title: StarlightUserConfig["title"];
   description?: StarlightUserConfig["description"];
   favicon?: StarlightUserConfig["favicon"];

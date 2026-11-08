@@ -17,6 +17,7 @@ if (site.pydocs) {
 
 // https://astro.build/config
 export default defineConfig({
+  site: site.url,
   publicDir: "./docs/site/public",
   markdown: {
     processor: satteri({
