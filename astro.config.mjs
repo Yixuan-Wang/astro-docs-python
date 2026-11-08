@@ -5,10 +5,6 @@ import starlight from "@astrojs/starlight";
 import starlightPydocs, { pydocsSidebarGroup } from "starlight-pydocs";
 import siteInput from "./docs/site/config";
 
-// The engine wires generic facilities; everything package-specific comes from
-// `docs/site/config.ts` (mounted as the `site` volume in the container model).
-// That module is downstream input, so it is read through the engine's contract
-// (`src/site.ts`) and validated at runtime rather than type-checked here.
 const site = /** @type {import("./src/site").SiteConfig} */ (siteInput);
 
 const plugins = [];

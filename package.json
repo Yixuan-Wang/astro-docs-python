@@ -18,7 +18,7 @@
     "astro": "^7.4.7",
     "satteri": "^0.11.7",
     "sharp": "^0.35.5",
-    "starlight-pydocs": "link:/Users/tomyxw/Documents/Projects/stub/starlight-pydocs/packages/starlight-pydocs"
+    "starlight-pydocs": "github:Yixuan-Wang/starlight-pydocs#main&path:packages/starlight-pydocs"
   },
   "devDependencies": {
     "vite": "catalog:",
