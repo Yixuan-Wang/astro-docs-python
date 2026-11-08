@@ -6,6 +6,9 @@ importers:
   .:
     configDependencies: {}
     packageManagerDependencies:
+      '@pnpm/exe':
+        specifier: 12.4.2
+        version: 12.4.2
       pnpm:
         specifier: 12.4.2
         version: 12.4.2
@@ -89,6 +92,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@pnpm/exe@12.4.2':
+    resolution: {integrity: sha512-cJZ6sFoyDvFD9cZbx0OYt2JtbCcc1fRXDYrnJNE5BB0cXwWGQpj7OZOWamtqiuu8xwPxTtOod5fqxdLLotftDg==}
+    engines: {node: '>=18.*'}
+    hasBin: true
+
   pnpm@12.4.2:
     resolution: {integrity: sha512-CK3GYTGAJ1x8ntraOdzwjJxhrU5+rzMKTzRh8QKw+QdCNFTRF/mOctR/7wYWBwZE17/8lzpqV/UJCm18NosHyQ==}
     engines: {node: '>=18.*'}
@@ -137,6 +145,23 @@ snapshots:
 
   '@pnpm/exe.win32-x64@12.4.2':
     optional: true
+
+  '@pnpm/exe@12.4.2':
+    optionalDependencies:
+      '@pnpm/exe.android-arm64': 12.4.2
+      '@pnpm/exe.android-x64': 12.4.2
+      '@pnpm/exe.darwin-arm64': 12.4.2
+      '@pnpm/exe.darwin-x64': 12.4.2
+      '@pnpm/exe.freebsd-x64': 12.4.2
+      '@pnpm/exe.linux-arm64': 12.4.2
+      '@pnpm/exe.linux-arm64-musl': 12.4.2
+      '@pnpm/exe.linux-ppc64': 12.4.2
+      '@pnpm/exe.linux-riscv64': 12.4.2
+      '@pnpm/exe.linux-s390x': 12.4.2
+      '@pnpm/exe.linux-x64': 12.4.2
+      '@pnpm/exe.linux-x64-musl': 12.4.2
+      '@pnpm/exe.win32-arm64': 12.4.2
+      '@pnpm/exe.win32-x64': 12.4.2
 
   pnpm@12.4.2:
     optionalDependencies:
@@ -197,8 +222,8 @@ importers:
         specifier: ^0.35.3
         version: 0.35.4(@types/node@24.13.4)
       starlight-pydocs:
-        specifier: ^0.2.1
-        version: 0.2.1(@astrojs/starlight@0.42.1(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.4)))(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.4))
+        specifier: link:/Users/tomyxw/Documents/Projects/stub/starlight-pydocs/packages/starlight-pydocs
+        version: link:../../../stub/starlight-pydocs/packages/starlight-pydocs
     devDependencies:
       vite:
         specifier: npm:@voidzero-dev/vite-plus-core@0.2.6
@@ -2259,19 +2284,6 @@ packages:
 
   stackback@0.0.2:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
-
-  starlight-pydocs@0.2.1:
-    resolution: {integrity: sha512-JU//aeAmEEBdXwgminAlqlCaMUUVA9OIqHGgmNehZh/VDg0ZknlFmVIq86CucnKKV5gtPps5qHwkSfatEy4n3g==}
-    engines: {node: '>=22.12.0'}
-    peerDependencies:
-      '@astrojs/markdown-remark': ^7.2.0
-      '@astrojs/starlight': '>=0.41.0'
-      astro: '>=7.0.0'
-    peerDependenciesMeta:
-      '@astrojs/markdown-remark':
-        optional: true
-      '@astrojs/starlight':
-        optional: true
 
   std-env@4.2.0:
     resolution: {integrity: sha512-oCUKSupKTHX53EyjDtuZQ64pjLJ6yYCtpmEw0goYxtjG9KpbRe8KAsl2tBUGU9DyMcJ0RwJ8GqJAFzMXcXW1Rw==}
@@ -4511,12 +4523,6 @@ snapshots:
   space-separated-tokens@2.0.2: {}
 
   stackback@0.0.2: {}
-
-  starlight-pydocs@0.2.1(@astrojs/starlight@0.42.1(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.4)))(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.4)):
-    dependencies:
-      astro: 7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.4)
-    optionalDependencies:
-      '@astrojs/starlight': 0.42.1(astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.4))
 
   std-env@4.2.0: {}
 

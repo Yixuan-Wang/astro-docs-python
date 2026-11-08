@@ -8,6 +8,7 @@
 
 # build output
 dist/
+out/
 # generated types
 .astro/
 
